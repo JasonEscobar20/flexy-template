@@ -27,11 +27,6 @@ const routes: Routes = [
             (m) => m.DashboardsModule
           ),
       },
-      // {
-      //   path: 'mforms',
-      //   loadChildren: () =>
-      //     import('./pages/mforms/mforms.module').then((m) => m.MformsModule)
-      // },
       {
         path: 'mforms',
         loadChildren: () =>
