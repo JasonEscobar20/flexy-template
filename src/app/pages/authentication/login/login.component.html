@@ -31,18 +31,18 @@
 
             <form class="m-t-30" [formGroup]="form" (ngSubmit)="submit()">
               <mat-form-field appearance="outline" class="w-100" color="primary">
-                <mat-label>Username</mat-label>
-                <input matInput formControlName="uname" />
-                @if(f['uname'].touched && f['uname'].invalid) {
+                <mat-label> Email </mat-label>
+                <input matInput formControlName="email" />
+                @if(f['email'].touched && f['email'].invalid) {
                 <mat-hint class="m-b-16 error-msg">
-                  @if(f['uname'].errors && f['uname'].errors['required']) {
+                  @if(f['email'].errors && f['email'].errors['required']) {
                   <div class="text-error">
-                    Name is required.
+                    Email is required.
                   </div>
                   }
-                  @if(f['uname'].errors && f['uname'].errors['minlength']) {
+                  @if(f['email'].errors && f['email'].errors['email']) {
                   <div class="text-error">
-                    Name should be 6 character.
+                    Incorrect format.
                   </div>
                   }
 

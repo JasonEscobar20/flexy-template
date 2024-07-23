@@ -2,6 +2,8 @@ import { Component } from '@angular/core';
 
 import { ExamComponent } from 'src/app/components/forms/exam/exam.component';
 
+import { CognitoServiceService } from 'src/app/services/auth/cognito-service.service';
+
 @Component({
   selector: 'app-mforms',
   standalone: true,
@@ -12,5 +14,6 @@ import { ExamComponent } from 'src/app/components/forms/exam/exam.component';
   styleUrl: './mforms.component.scss'
 })
 export class MformsComponent {
-  constructor() {}
+  constructor(private authService: CognitoServiceService) {}
+
 }

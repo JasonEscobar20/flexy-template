@@ -5,6 +5,8 @@ import { Router, RouterModule } from '@angular/router';
 import { MaterialModule } from '../../../material.module';
 import { FeatherModule } from "angular-feather"
 
+import { CognitoServiceService } from 'src/app/services/auth/cognito-service.service';
+
 @Component({
   selector: 'app-login',
   standalone: true,
@@ -14,10 +16,10 @@ import { FeatherModule } from "angular-feather"
 export class AppLoginComponent {
   options = this.settings.getOptions();
 
-  constructor(private settings: CoreService, private router: Router) { }
+  constructor(private settings: CoreService, private authService: CognitoServiceService) { }
 
   form = new FormGroup({
-    uname: new FormControl('', [Validators.required, Validators.minLength(6)]),
+    email: new FormControl('', [Validators.required, Validators.email]),
     password: new FormControl('', [Validators.required]),
   });
 
@@ -26,7 +28,11 @@ export class AppLoginComponent {
   }
 
   submit() {
-    // console.log(this.form.value);
-    this.router.navigate(['/dashboards/dashboard1']);
+    if (this.form.valid) {
+      this.authService.login(this.form.value.email, this.form.value.password)
+    } else {
+      console.log('Usuario incorrecto')
+    }
+    // this.router.navigate(['/dashboards/dashboard1']);
   }
 }
